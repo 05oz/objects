@@ -13,6 +13,47 @@ verification certificate live. The mathematics is at
 
 ---
 
+## A forest, where every growth rule is a published result
+
+![forest](pieces/forest.png)
+
+Six findings decide what these trees look like, and nothing else does.
+
+**What forks.** A branch sitting at vertex *v* of one of the thirteen rigid witnesses of
+k(3,4) = 21 forks to the out-neighbours of *v*. Thirteen objects across twenty root
+vertices give 260 distinct trees, and because the objects are rigid, none of them repeats.
+
+**When it forks.** These graphs contain no four vertices in transitive order, which bounds
+the longest transitive chain at three. So a lineage runs exactly three internodes and then
+must fork. That constraint is the trees' rhythm — it is why they are trees and not reeds.
+
+**Which way it turns.** QR₇ = Cay(ℤ₇,{1,2,4}) is forced as the non-neighbourhood of any
+vertex with seven non-neighbours. Each arc *v* → *u* carries its Cayley difference
+(*u* − *v*) mod 7, and the branch turns toward the residues {1,2,4}, away from the
+non-residues {3,5,6}. Those two sets are not mirror images, so the trees lean. Reversing
+every arc gives the converse digraph — still free of both forbidden patterns, and it sends
+each residue to a non-residue exactly, so it draws the same tree mirrored. Half the stand
+is grown that way.
+
+**How dense the crown gets.** A_w is the exact spectrum of uncorrectable fault sets of the
+distance-5 rotated surface code. The normalised log-ratios A_{w+1}/A_w, across the weights
+that carry the sub-threshold probability, set how many children survive at each depth: three
+near the trunk, two out at the twigs.
+
+**What shape the crown takes.** Of the twenty certified ZEFOZ points of ¹⁶⁷Er³⁺:Y₂SiO₅,
+thirteen are saddles and seven are local maxima. Saddle-type trees open and spread;
+maximum-type trees close into a dome.
+
+**How distance works.** Newell's demagnetization tensor loses about six correct decimal
+digits per decade of separation and has none left near three hundred cells. That single
+certified curve is the haze, the colour, and the loss of fine twigs all at once. A tree far
+enough away has no significant figures left, and disappears.
+
+Only the scatter of trees across the ground was chosen. Every tree's own form is computed.
+
+Source: [`src/forest.py`](src/forest.py) · vector original
+[`pieces/forest.svg`](pieces/forest.svg) (73,620 branches)
+
 ## Thirteen rigid objects, each placing its own points
 
 ![spectral](pieces/spectral_grid.png)
