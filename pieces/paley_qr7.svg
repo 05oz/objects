@@ -29,6 +29,4 @@
 <circle cx="356.8" cy="797.3" r="15" fill="#fdfdfb" stroke="#1b1e24" stroke-width="2.6"/>
 <circle cx="178.3" cy="573.4" r="15" fill="#fdfdfb" stroke="#1b1e24" stroke-width="2.6"/>
 <circle cx="242.0" cy="294.2" r="15" fill="#fdfdfb" stroke="#1b1e24" stroke-width="2.6"/>
-<text x="500.0" y="942" font-family="Charter, Georgia, serif" font-size="25" fill="#14161a" text-anchor="middle">QR&#8327; — the Paley tournament on seven vertices</text>
-<text x="500.0" y="968" font-family="Charter, Georgia, serif" font-size="16" fill="#6b7078" text-anchor="middle">arrows from the quadratic residues {1, 2, 4} mod 7 · forced inside every extremal witness</text>
 </svg>

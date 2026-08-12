@@ -61,6 +61,10 @@ Only the scatter of trees across the ground was chosen. Every tree's own form is
 Source: [`src/forest.py`](src/forest.py) · vector original
 [`pieces/forest.svg`](pieces/forest.svg) (111,132 branches)
 
+Drawn from four deposits: witnesses `doi:10.5281/zenodo.21898266` · fault spectrum
+`doi:10.5281/zenodo.21898343` · digit-loss law `doi:10.5281/zenodo.21898722` · ZEFOZ points
+`doi:10.5281/zenodo.21898996`
+
 ## Thirteen rigid objects, each placing its own points
 
 ![spectral](pieces/spectral_grid.png)
@@ -72,14 +76,15 @@ them, no two alike. Every one is *rigid*: only the identity permutation maps it 
 Nothing here was laid out by hand. Each object's adjacency matrix, made skew-symmetric, has
 purely imaginary eigenvalues whose eigenvectors give a two-dimensional frame; the vertices sit
 where that frame puts them. The layout is computed from the object, not chosen for it. Colour
-follows out-degree. A symmetric object would collapse into a circle under this treatment — these
+follows out-degree on one absolute scale across all thirteen panels — out-degree 5 blue,
+6 amber, 7 green, the only out-degrees that occur — so cells of the grid may be compared. A symmetric object would collapse into a circle under this treatment — these
 cannot, because they have no symmetry to collapse into, and that is why no two of the thirteen
 share a silhouette.
 
 These pictures could not have been made before August 2026, because the objects were not known
 to exist.
 
-`doi:10.5281/zenodo.21890619`
+`doi:10.5281/zenodo.21898266`
 
 ## QR₇ — the Paley tournament on seven vertices
 
@@ -90,14 +95,19 @@ of {1, 2, 4}. It is the only tournament on seven vertices with no transitively o
 quadruple, and it appears inside every one of the thirteen witnesses above. The pattern was not
 chosen; it is forced by the constraint.
 
+`doi:10.5281/zenodo.21890619` · `doi:10.5281/zenodo.21898266`
+
 ## Cay(ℤ₂₈, {3, 8, 10, 12, 17})
 
 ![circulant](pieces/circulant_k63.png)
 
-Twenty-eight points on a circle, each joined to the points 3, 8, 10, 12 and 17 steps ahead. The
-connection set is *sum-free* — no two of its elements sum to a third — which is exactly what
-makes the resulting tournament free of transitive triangles. It has independence number 5, and
-so witnesses that k(6,3) ≥ 29.
+Twenty-eight points on a circle, each joined to the points 3, 8, 10, 12 and 17 steps ahead, and
+each chord oriented that way. Five arcs leave every point, so this is a digraph and not a
+tournament: 238 of the 378 pairs are left unjoined. The connection set is *sum-free* in ℤ₂₈ — no
+element of it is the sum of two of its elements — and a transitive triangle in a Cayley digraph
+is exactly such a sum, so the digraph has none. The underlying graph has independence number 5,
+so no six of the points are mutually non-adjacent. Together those two facts witness
+k(6,3) ≥ 29.
 
 The rosette and the void at the centre are not design choices. They are what those five
 distances do when drawn.
@@ -109,12 +119,15 @@ distances do when drawn.
 ## Prints
 
 `print/` holds 12 × 12 inch masters at 300 dpi, each with a caption plate stating the object,
-the theorem it witnesses, and the DOI of its archived certificate. The `.svg` sources are
-resolution-independent and can be enlarged without loss.
+the theorem it witnesses, and the version DOI of its archived certificate — the version, not the
+concept DOI, so the plate keeps pointing at the deposit it was drawn from. The `.svg` sources
+declare the same 12 × 12 inches and are resolution-independent.
 
 ## Licence
 
-Images: CC BY 4.0 — use them, credit *Half Ounce Research* and the DOI on the piece.
-Source code in `src/`: Apache-2.0.
+Images: CC BY 4.0, full text in [`LICENSE-CC-BY-4.0.txt`](LICENSE-CC-BY-4.0.txt) — use them,
+credit *Half Ounce Research* and the DOI recorded with the piece.
+Source code in `src/`: Apache-2.0, full text in
+[`LICENSE-Apache-2.0.txt`](LICENSE-Apache-2.0.txt).
 
 The objects themselves belong to nobody.
