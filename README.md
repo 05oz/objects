@@ -13,22 +13,25 @@ verification certificate live. The mathematics is at
 
 ---
 
-## The thirteen extremal witnesses
+## Thirteen rigid objects, each placing its own points
 
-![thirteen witnesses](pieces/thirteen_witnesses.png)
+![spectral](pieces/spectral_grid.png)
 
-The oriented Ramsey number k(3,4) is 21: every oriented graph on 21 vertices contains three
-mutually non-adjacent vertices or a transitively ordered set of four, and there are graphs on 20
-vertices containing neither. There are at least thirteen such graphs, no two alike, and each has
-no symmetry at all — a *rigid* object, in the technical sense that only the identity permutation
-maps it to itself.
+The oriented Ramsey number k(3,4) is 21. On 20 vertices there are graphs containing neither three
+mutually non-adjacent vertices nor four in transitive order — and there are at least thirteen of
+them, no two alike. Every one is *rigid*: only the identity permutation maps it to itself.
 
-Each panel is one of them, drawn as a chord diagram. Blue marks the vertices whose seven
-non-neighbours are forced to form the Paley tournament below. That forcing is a small theorem:
-a vertex's non-neighbours must form a tournament with no transitive quadruple, such tournaments
-have at most seven vertices, and on seven vertices there is exactly one.
+Nothing here was laid out by hand. Each object's adjacency matrix, made skew-symmetric, has
+purely imaginary eigenvalues whose eigenvectors give a two-dimensional frame; the vertices sit
+where that frame puts them. The layout is computed from the object, not chosen for it. Colour
+follows out-degree. A symmetric object would collapse into a circle under this treatment — these
+cannot, because they have no symmetry to collapse into, and that is why no two of the thirteen
+share a silhouette.
 
-`doi:10.5281/zenodo.21890619` · `doi:10.5281/zenodo.21799111`
+These pictures could not have been made before August 2026, because the objects were not known
+to exist.
+
+`doi:10.5281/zenodo.21890619`
 
 ## QR₇ — the Paley tournament on seven vertices
 
