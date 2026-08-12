@@ -44,15 +44,22 @@ near the trunk, two out at the twigs.
 thirteen are saddles and seven are local maxima. Saddle-type trees open and spread;
 maximum-type trees close into a dome.
 
+**What colour it is.** Hue is the same arithmetic, seen directly. A tree's own hue comes
+from the residue fraction of its root's out-arcs — all non-residues runs blue, all residues
+runs amber, and the mixtures fall through green between them. Each branch then rotates off
+that hue by its own Cayley difference, turning warm for a residue and cool for a
+non-residue. Hue is rotated and never blended, because mixing two opposite hues in RGB only
+produces grey.
+
 **How distance works.** Newell's demagnetization tensor loses about six correct decimal
 digits per decade of separation and has none left near three hundred cells. That single
-certified curve is the haze, the colour, and the loss of fine twigs all at once. A tree far
-enough away has no significant figures left, and disappears.
+certified curve is the haze, the saturation, and the loss of fine twigs all at once. A tree
+far enough away has no significant figures left, and disappears into the dark.
 
 Only the scatter of trees across the ground was chosen. Every tree's own form is computed.
 
 Source: [`src/forest.py`](src/forest.py) · vector original
-[`pieces/forest.svg`](pieces/forest.svg) (73,620 branches)
+[`pieces/forest.svg`](pieces/forest.svg) (111,132 branches)
 
 ## Thirteen rigid objects, each placing its own points
 

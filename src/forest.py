@@ -56,7 +56,7 @@ def digits(n):
     return max(0.0, D0 - SLOPE * math.log10(n))
 
 # --------------------------------------------------------------------- growth
-def grow(segs, x, y, ang, L, wid, v, out, depth, maxd, spread, curve, decay):
+def grow(segs, x, y, ang, L, wid, v, out, depth, maxd, spread, curve, decay, dd=-1):
     if depth > maxd or L < 0.55 or wid < 0.03:
         return
     px, py, a = x, y, ang
@@ -67,7 +67,7 @@ def grow(segs, x, y, ang, L, wid, v, out, depth, maxd, spread, curve, decay):
         px += math.sin(a) * L / 3.0
         py -= math.cos(a) * L / 3.0
         pts.append((px, py))
-    segs.append((pts, wid))
+    segs.append((pts, wid, depth, dd))
     nb = out[v]
     if not nb:
         return
@@ -79,11 +79,11 @@ def grow(segs, x, y, ang, L, wid, v, out, depth, maxd, spread, curve, decay):
         dd = (u - v) % 7                             # the Cayley difference of the arc
         off = (1.0 if dd in QR7 else -1.0) * ((dd + 1) / 7.0) * lean
         grow(segs, px, py, a + off, L * decay * (0.93 + 0.03 * dd),
-             wid * 0.66, u, out, depth + 1, maxd, spread, curve, decay)
+             wid * 0.66, u, out, depth + 1, maxd, spread, curve, decay, dd)
 
 def tree(wi, root, height, n):
     d = digits(n)
-    maxd = max(1, min(8, int(1 + round(d / 1.95))))
+    maxd = max(2, min(8, int(1 + round(d / 1.70))))
     saddle = SIG[root % 20] == "--+"
     spread = 0.76 if saddle else 0.52
     decay = 0.735 if saddle else 0.705
@@ -129,25 +129,58 @@ def build():
         t = digits(n) / D0
         if t <= 0.010:
             continue
-        op = round(min(0.90, 0.05 + 0.85 * t ** 1.15), 2)
-        for pts, wid in tree(wi, root, h, n):
+        op = round(min(0.95, 0.07 + 0.88 * t ** 0.95), 2)
+        tq = round(t, 1)
+        nbr = OUT[wi][root]
+        bq = round(sum(1 for u in nbr if (u - root) % 7 in QR7) / max(1, len(nbr)), 1)
+        for pts, wid, dep, dd in tree(wi, root, h, n):
             total += 1
             wb = round(min(3.4, max(0.16, wid)), 1)
             p = pts
-            buckets.setdefault((op, wb), []).append(
+            buckets.setdefault((ink(dd, min(dep, 6), tq, bq), op, wb), []).append(
                 "M%.1f %.1fQ%.1f %.1f %.1f %.1fT%.1f %.1f" % (
                     x + mir * p[0][0], by + p[0][1], x + mir * p[1][0], by + p[1][1],
                     x + mir * p[2][0], by + p[2][1], x + mir * p[3][0], by + p[3][1]))
     return buckets, total
 
-def ink(t):
-    far, near = (0xAE, 0xB8, 0xC6), (0x11, 0x15, 0x1A)
-    return "#%02x%02x%02x" % tuple(int(f + (nn - f) * t) for f, nn in zip(far, near))
+# Hue carries the Cayley difference of the arc that grew the branch, and the
+# tree's own hue comes from the residue fraction of its root's out-arcs. Both are
+# rotations, never blends — mixing two opposite hues through RGB only makes grey.
+HAZE = (0x11, 0x18, 0x22)          # far trees dissolve into the dark, not out of it
+H_COOL, H_WARM = 208.0, 30.0       # b = 0 runs blue, b = 1 runs amber, green between
+
+def hsv(h, sat, val):
+    h = (h % 360.0) / 60.0
+    i = int(h) % 6
+    f = h - int(h)
+    p, q, t_ = val * (1 - sat), val * (1 - sat * f), val * (1 - sat * (1 - f))
+    r, g, b = ((val, t_, p), (q, val, p), (p, val, t_),
+               (p, q, val), (t_, p, val), (val, p, q))[i]
+    return (r * 255.0, g * 255.0, b * 255.0)
+
+def ink(dd, dep, t, b):
+    """b is the residue fraction of the root's own out-arcs: the tree's hue."""
+    b = min(1.0, max(0.0, 0.5 + (b - 0.5) * 2.2))   # push off the middle: fewer pure greens
+    h = H_COOL + (H_WARM - H_COOL) * b
+    if dd >= 0:                                  # the branch turns its own way off that
+        h += (1.0 if dd in QR7 else -1.0) * (9.0 + 6.0 * dd)
+    f = min(1.0, dep / 1.30)                     # bark is barely tinted, twigs are not
+    hh = h % 360.0
+    green = max(0.0, 1.0 - abs(hh - 118.0) / 46.0)   # greens go deep, never neon
+    c = hsv(h, 0.13 + 0.44 * f, (0.79 - 0.08 * f) * (1.0 - 0.28 * green))
+    sc = t ** 0.70                               # and the haze law washes it back out
+    c = [HAZE[i] + (c[i] - HAZE[i]) * sc for i in range(3)]
+    return "#%02x%02x%02x" % tuple(int(max(0, min(255, v))) for v in c)
 
 def svg():
     buckets, total = build()
     o = ['<svg xmlns="http://www.w3.org/2000/svg" width="%d" height="%d" viewBox="0 0 %d %d">'
-         % (W, H, W, H), '<rect width="%d" height="%d" fill="#fcfcfb"/>' % (W, H)]
+         % (W, H, W, H),
+         '<defs><linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">'
+         '<stop offset="0" stop-color="#05070b"/><stop offset="0.62" stop-color="#0d141d"/>'
+         '<stop offset="0.78" stop-color="#16202c"/><stop offset="1" stop-color="#0a0f16"/>'
+         '</linearGradient></defs>',
+         '<rect width="%d" height="%d" fill="url(#sky)"/>' % (W, H)]
 
     g, rnd = [], lcg(77)
     for _ in range(430):
@@ -156,21 +189,20 @@ def svg():
         yy = HORIZON + (H - HORIZON) * n ** -0.55
         xx = -60 + next(rnd) * (W + 120)
         dn = digits(n) / D0
-        g.append('<path d="M%.0f %.1fh%.0f" stroke="#aeb7c2" stroke-width="%.2f" opacity="%.3f"/>'
+        g.append('<path d="M%.0f %.1fh%.0f" stroke="#8fa6bd" stroke-width="%.2f" opacity="%.3f"/>'
                  % (xx, yy, 5 + 92 * dn ** 1.6, 0.45 + 0.9 * dn,
-                    round(0.030 + 0.155 * dn, 3)))
+                    round(0.025 + 0.20 * dn, 3)))
     o.append('<g fill="none" stroke-linecap="round">' + "".join(g) + "</g>")
 
-    for key in sorted(buckets, key=lambda k: (k[0], k[1])):
-        op, wb = key
-        t = min(1.0, max(0.0, (op - 0.05) / 0.85) ** 0.85)
+    for key in sorted(buckets, key=lambda k: (k[1], k[2], k[0])):
+        col, op, wb = key
         o.append('<g fill="none" stroke="%s" stroke-width="%.2f" opacity="%.2f" '
                  'stroke-linecap="round"><path d="%s"/></g>'
-                 % (ink(t), wb, op, "".join(buckets[key])))
+                 % (col, wb, op, "".join(buckets[key])))
 
     for bx, by, sc in ((452, 54, 7.4), (500, 71, 5.6), (534, 49, 4.3)):
         o.append('<path d="M%.1f %.1fq%.1f -%.1f %.1f 0q%.1f -%.1f %.1f 0" fill="none" '
-                 'stroke="#3e4750" stroke-width="1.05" opacity="0.44" stroke-linecap="round"/>'
+                 'stroke="#b9c6d4" stroke-width="1.05" opacity="0.5" stroke-linecap="round"/>'
                  % (bx, by, sc * .5, sc * .42, sc, sc * .5, sc * .42, sc))
     o.append("</svg>")
     return "".join(o), total
