@@ -11,6 +11,16 @@ The mathematics is at [github.com/05oz/certify](https://github.com/05oz/certify)
 
 ---
 
+## Five permutations that cannot all be regular
+
+![florentine](pieces/florentine.png)
+
+Source: [`src/florentine.py`](src/florentine.py) · [`pieces/florentine.svg`](pieces/florentine.svg)
+
+`doi:10.5281/zenodo.21831896`
+
+---
+
 ## The bivariate bicycle family
 
 ![family](pieces/family.png)
