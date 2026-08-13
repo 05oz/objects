@@ -50,7 +50,7 @@ def hsv(h,s,v):
     r,g,b=((v,t,p),(q,v,p),(p,v,t),(p,q,v),(t,p,v),(v,p,q))[i]
     return "#%02x%02x%02x"%(int(r*255),int(g*255),int(b*255))
 
-DUR=15.6                      # 1.2 s per witness
+DUR=6.5                       # 0.5 s per witness
 out=[f'<svg xmlns="http://www.w3.org/2000/svg" width="{S}" height="{S}" viewBox="0 0 {S} {S}">',
      f'<rect width="{S}" height="{S}" fill="#0a0d12"/>',
      '<g fill="none" stroke-linecap="round">']
@@ -62,13 +62,16 @@ for a in union:
     qx,qy = mx-dy/L*L*0.14, my+dx/L*L*0.14
     t=(n-1)/12.0                                  # 0 = appears once, 1 = in all thirteen
     col=hsv(198-166*t, 0.40+0.26*t, 0.72+0.20*t)
-    vals=";".join(("0.80" if a in f else "0.07") for f in frames)+";0.80"
+    on=[("0.80" if a in f else "0.07") for f in frames]
+    # hold each state for 72% of its slot, then flick to the next: alive, not strobing
+    vals=";".join(v for x in on for v in (x,x))+";"+on[0]
+    kt=";".join(f"{k:.4f}" for i in range(13) for k in (i/13.0,(i+0.72)/13.0))+";1"
     wid=1.1+2.4*t
     base="0.80" if a in frames[0] else "0.07"
     out.append(f'<path d="M{x1:.1f} {y1:.1f}Q{qx:.1f} {qy:.1f} {x2:.1f} {y2:.1f}" stroke="{col}" '
                f'stroke-width="{wid:.2f}" opacity="0.045">'
-               f'<animate attributeName="opacity" values="{vals}" dur="{DUR}s" '
-               f'calcMode="discrete" repeatCount="indefinite"/></path>')
+               f'<animate attributeName="opacity" values="{vals}" keyTimes="{kt}" '
+               f'dur="{DUR}s" calcMode="linear" repeatCount="indefinite"/></path>')
 out.append('</g><g>')
 for i,(px,py) in enumerate(pos):
     out.append(f'<circle cx="{px:.1f}" cy="{py:.1f}" r="6.0" fill="#f2ece0" opacity="0.97"/>')
