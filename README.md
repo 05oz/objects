@@ -10,6 +10,16 @@ The mathematics is at [github.com/05oz/certify](https://github.com/05oz/certify)
 
 ---
 
+## The gross code on its torus
+
+![gross](pieces/gross.png)
+
+Source: [`src/gross.py`](src/gross.py) · [`pieces/gross.svg`](pieces/gross.svg)
+
+`doi:10.5281/zenodo.21831995`
+
+---
+
 ## A forest
 
 ![forest](pieces/forest.png)
