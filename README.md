@@ -11,6 +11,26 @@ The mathematics is at [github.com/05oz/certify](https://github.com/05oz/certify)
 
 ---
 
+## Where the arithmetic stops being true
+
+![digits](pieces/digits.png)
+
+Source: [`src/digits.py`](src/digits.py) · [`pieces/digits.svg`](pieces/digits.svg)
+
+`doi:10.5281/zenodo.21922469`
+
+---
+
+## Twenty clock transitions, as the curvature that certifies them
+
+![curvature](pieces/curvature.png)
+
+Source: [`src/curvature.py`](src/curvature.py) · [`pieces/curvature.svg`](pieces/curvature.svg)
+
+`doi:10.5281/zenodo.21898996`
+
+---
+
 ## Certified packings
 
 ![packings](pieces/packings.png)
