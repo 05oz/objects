@@ -11,6 +11,16 @@ The mathematics is at [github.com/05oz/certify](https://github.com/05oz/certify)
 
 ---
 
+## Five codes, asked what shape they are
+
+![tanner](pieces/tanner.png)
+
+Source: [`src/tanner.py`](src/tanner.py) · [`pieces/tanner.svg`](pieces/tanner.svg)
+
+`doi:10.5281/zenodo.21799780`
+
+---
+
 ## Where the arithmetic stops being true
 
 ![digits](pieces/digits.png)
