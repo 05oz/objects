@@ -11,6 +11,16 @@ The mathematics is at [github.com/05oz/certify](https://github.com/05oz/certify)
 
 ---
 
+## Certified packings
+
+![packings](pieces/packings.png)
+
+Source: [`src/packings.py`](src/packings.py) · [`pieces/packings.svg`](pieces/packings.svg)
+
+`doi:10.5281/zenodo.21897011`
+
+---
+
 ## Five permutations that cannot all be regular
 
 ![florentine](pieces/florentine.png)
