@@ -20,6 +20,16 @@ Source: [`src/forest.py`](src/forest.py) · [`pieces/forest.svg`](pieces/forest.
 
 ---
 
+## Thirteen, in one frame
+
+![thirteen](pieces/thirteen.png)
+
+Source: [`src/thirteen_anim.py`](src/thirteen_anim.py) · [`pieces/thirteen.svg`](pieces/thirteen.svg) (animated)
+
+`doi:10.5281/zenodo.21898266`
+
+---
+
 ## Thirteen rigid objects
 
 ![spectral](pieces/spectral_grid.png)
