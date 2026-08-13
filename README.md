@@ -2,8 +2,9 @@
 
 Pictures of mathematical objects that this program proved exist.
 
-Nothing here is decorative. Every line is the object itself. If a picture looks striking, that
-is a property of the object, not of the drawing.
+Nothing here is decorative and nothing here is designed. Every piece is an object this program
+proved exists, drawn on the structure it already has — the layout computed from the object, not
+chosen for it. If a picture looks striking, that is a property of the object, not of the drawing.
 
 The mathematics is at [github.com/05oz/certify](https://github.com/05oz/certify); the program is
 [halfounce.io](https://halfounce.io).
@@ -12,21 +13,14 @@ The mathematics is at [github.com/05oz/certify](https://github.com/05oz/certify)
 
 ## The gross code on its torus
 
-![gross](pieces/gross.png)
+![gross](pieces/gross-spin.gif)
+
+One lattice step of rotation; the code is quasi-cyclic, so the loop closes on itself.
+Still frame: [`pieces/gross.png`](pieces/gross.png)
 
 Source: [`src/gross.py`](src/gross.py) · [`pieces/gross.svg`](pieces/gross.svg)
 
 `doi:10.5281/zenodo.21831995`
-
----
-
-## A forest
-
-![forest](pieces/forest.png)
-
-Source: [`src/forest.py`](src/forest.py) · [`pieces/forest.svg`](pieces/forest.svg)
-
-`doi:10.5281/zenodo.21898266` · `doi:10.5281/zenodo.21898343` · `doi:10.5281/zenodo.21898722` · `doi:10.5281/zenodo.21898996`
 
 ---
 
