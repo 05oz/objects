@@ -11,6 +11,16 @@ The mathematics is at [github.com/05oz/certify](https://github.com/05oz/certify)
 
 ---
 
+## The bivariate bicycle family
+
+![family](pieces/family.png)
+
+Source: [`src/family.py`](src/family.py) · [`pieces/family.svg`](pieces/family.svg)
+
+`doi:10.5281/zenodo.21831995`
+
+---
+
 ## The gross code on its torus
 
 ![gross](pieces/gross-spin.gif)
