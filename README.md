@@ -11,6 +11,16 @@ The mathematics is at [github.com/05oz/certify](https://github.com/05oz/certify)
 
 ---
 
+## The shape of a machine proof
+
+![proof](pieces/proof.png)
+
+Source: [`src/proof.py`](src/proof.py) · [`pieces/proof.svg`](pieces/proof.svg)
+
+`doi:10.5281/zenodo.21816010`
+
+---
+
 ## What a decoder sees, and where the code breaks
 
 ![failure](pieces/failure.png)
