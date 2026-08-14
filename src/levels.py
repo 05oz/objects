@@ -25,8 +25,9 @@ published atlas is a nuclear transition within one electron manifold, which is r
 straight off the certificate and is why these are the long-lived ones.
 
 The fields are exact rationals in millitesla and are not small, from 191 to 2,475. Columns are
-ordered by field strength, which is why the ladders drift. Site 1 is drawn cool and site 2
-warm. Thirteen of the twenty are saddles of the transition frequency and seven are maxima;
+ordered by field strength, which is why the ladders drift. The rule separates site 1 from site 2. Colour carries
+one thing only, whether the point is a saddle of the transition frequency or a maximum, and it
+follows the convention of the curvature piece, which draws these same twenty objects. Thirteen of the twenty are saddles of the transition frequency and seven are maxima;
 none is a minimum, which is a result of the same certificate and not an assumption.
 
 doi:10.5281/zenodo.21898996
@@ -78,30 +79,34 @@ def svg():
     o.append('<line x1="70" y1="%.1f" x2="%d" y2="%.1f" stroke="#252c37" stroke-width="1" '
              'opacity="0.8"/>' % (Y(0), W - 70, Y(0)))          # zero of energy
 
+    for k in range(1, n):                       # where site 1 ends and site 2 begins
+        if P[k]["site"] != P[k - 1]["site"]:
+            x = 120 + step * k
+            o.append('<line x1="%.1f" y1="%d" x2="%.1f" y2="%d" stroke="#2a3240" '
+                     'stroke-width="1" opacity="0.75"/>' % (x, TOP - 20, x, BOT + 20))
+
     for k, r in enumerate(P):
         cx = 120 + step * (k + 0.5)
-        cool = r["site"] == 1
-        base = "#7fc4d8" if cool else "#e0a05e"
         sad = "+" in r["sig"]
+        # the only hue that means anything: saddle or maximum, matching curvature.py,
+        # which draws these same twenty points. Everything else is neutral.
+        hue = "#e0708e" if sad else "#5fd0d8"
         for idx, (e, _) in enumerate(r["levels"]):
             on = idx in (r["i"], r["j"])
             o.append('<line x1="%.1f" y1="%.1f" x2="%.1f" y2="%.1f" stroke="%s" '
                      'stroke-width="%.1f" opacity="%.2f" stroke-linecap="round"/>'
                      % (cx - half, Y(e), cx + half, Y(e),
-                        "#fff1d8" if on else base, 3.4 if on else 1.5, 0.97 if on else 0.42))
+                        hue if on else "#7b8494", 3.2 if on else 1.4, 0.95 if on else 0.34))
         ei, ej = r["levels"][r["i"]][0], r["levels"][r["j"]][0]
-        o.append('<line x1="%.1f" y1="%.1f" x2="%.1f" y2="%.1f" stroke="#fff1d8" '
-                 'stroke-width="1.2" opacity="0.55"/>' % (cx, Y(ei), cx, Y(ej)))
-        # a saddle of the transition frequency, or a maximum
-        o.append('<circle cx="%.1f" cy="%.1f" r="4.0" fill="%s" opacity="0.9"/>'
-                 % (cx, Y((ei + ej) / 2), "#ff7d6b" if sad else "#8de0b0"))
+        o.append('<line x1="%.1f" y1="%.1f" x2="%.1f" y2="%.1f" stroke="%s" '
+                 'stroke-width="1.1" opacity="0.42"/>' % (cx, Y(ei), cx, Y(ej), hue))
 
     o.append('<text x="120" y="86" font-family="Georgia,serif" font-size="34" fill="#e8e3d6">'
              'Twenty certified ZEFOZ points of ¹⁶⁷Er³⁺:Y₂SiO₅'
              '</text>')
     o.append('<text x="120" y="%d" font-family="Georgia,serif" font-size="24" fill="#767d89">'
-             'sixteen levels each, ordered by field strength &#183; site 1 cool, site 2 warm '
-             '&#183; saddle red, maximum green</text>' % (H - 76))
+             'sixteen levels each &#183; site 1 left of the rule, site 2 right, each ordered by '
+             'field strength &#183; saddle rose, maximum teal</text>' % (H - 76))
     o.append("</svg>")
     return "".join(o), P
 
