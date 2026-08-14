@@ -12,9 +12,12 @@ enclosure of the true value, computed in outward-rounded interval arithmetic.
 
 The lines fall at about six digits per decade and each one is drawn brighter the longer it
 survives. Where a line meets the horizon that geometry has no correct significant figure
-left. The crossing is not one number: it runs from 98 cells for an elongated cell's
-off-diagonal entry to 1317 for a thin film's out-of-plane entry, and the familiar "about
-300 cells" is the cube's crossing, not a constant.
+left. The crossing is not one number. All fifty cross, and each crossing is located between
+two tabulated separations rather than measured at one: they run from between 55 and 100 cells
+for an elongated cell's off-diagonal entry to between 1000 and 2000 for a thin film's
+out-of-plane entry. The familiar "about 300 cells" is where the cube's own crossings fall,
+not a constant. The marker on the horizon is placed by logarithmic interpolation inside each
+bracket, which is a drawing convenience and not a measured value.
 
 Past the horizon the lines are drawn dissolving over the next five and a half digits,
 following the running minimum. Those are the two rendering decisions here and both are
