@@ -11,6 +11,16 @@ The mathematics is at [github.com/05oz/certify](https://github.com/05oz/certify)
 
 ---
 
+## What a decoder sees, and where the code breaks
+
+![failure](pieces/failure.png)
+
+Source: [`src/failure.py`](src/failure.py) · [`pieces/failure.svg`](pieces/failure.svg)
+
+`doi:10.5281/zenodo.21895825`
+
+---
+
 ## Five codes, asked what shape they are
 
 ![tanner](pieces/tanner.png)
