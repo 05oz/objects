@@ -11,6 +11,16 @@ The mathematics is at [github.com/05oz/certify](https://github.com/05oz/certify)
 
 ---
 
+## Twenty fields at which a spin forgets more slowly
+
+![levels](pieces/levels.png)
+
+Source: [`src/levels.py`](src/levels.py) · [`pieces/levels.svg`](pieces/levels.svg)
+
+`doi:10.5281/zenodo.21898996`
+
+---
+
 ## The shape of a machine proof
 
 ![proof](pieces/proof.png)
