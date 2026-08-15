@@ -11,6 +11,16 @@ The mathematics is at [github.com/05oz/certify](https://github.com/05oz/certify)
 
 ---
 
+## A shape that appears when you have enough of them
+
+![census](pieces/census.png)
+
+Source: [`src/census.py`](src/census.py) · [`pieces/census.svg`](pieces/census.svg)
+
+`doi:10.5281/zenodo.21897011`
+
+---
+
 ## A bond-dimension-2 state, cut in half
 
 ![entangle](pieces/entangle.png)
