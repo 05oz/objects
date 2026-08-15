@@ -11,6 +11,16 @@ The mathematics is at [github.com/05oz/certify](https://github.com/05oz/certify)
 
 ---
 
+## A bond-dimension-2 state, cut in half
+
+![entangle](pieces/entangle.png)
+
+Source: [`src/entangle.py`](src/entangle.py) · [`pieces/entangle.svg`](pieces/entangle.svg)
+
+`doi:10.5281/zenodo.21832028`
+
+---
+
 ## Twenty fields at which a spin forgets more slowly
 
 ![levels](pieces/levels.png)
