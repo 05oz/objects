@@ -11,6 +11,16 @@ The mathematics is at [github.com/05oz/certify](https://github.com/05oz/certify)
 
 ---
 
+## The decoder never sees the error
+
+![guess](pieces/guess.gif)
+
+Source: [`src/guess.py`](src/guess.py) · [`pieces/guess.gif`](pieces/guess.gif) · [`pieces/guess.svg`](pieces/guess.svg)
+
+`doi:10.5281/zenodo.21895825`
+
+---
+
 ## A bond-dimension-2 state, cut in half
 
 ![entangle](pieces/entangle.png)
