@@ -36,7 +36,7 @@ PANELS = [("min9_ge10.lrat", "ν₃(9) = 9", "no 10 blocks on 9 points"),
           ("min10_ge13.lrat", "ν₃(10) = 12", "no 13 blocks on 10 points")]
 PW, PH = 1560, 860
 W, H = PW, PH * len(PANELS)
-L, R, T, B = 130, PW - 90, 96, PH - 104
+L, R, T, B = 110, PW - 90, 64, PH - 70
 
 def parse(fn):
     """lemma id -> (antecedents, clause width), in file order"""
@@ -105,11 +105,6 @@ def panel(fn, title, sub, oy):
         o.append('<circle cx="%.1f" cy="%.1f" r="13" fill="#fff0d0" opacity="0.13"/>' % (x, y))
         o.append('<circle cx="%.1f" cy="%.1f" r="5.4" fill="#fff4de" opacity="0.97"/>' % (x, y))
 
-    o.append('<text x="%d" y="%.1f" font-family="Georgia,serif" font-size="38" fill="#ece6d8">'
-             '%s</text>' % (L, oy + 58, title))
-    o.append('<text x="%d" y="%.1f" font-family="Georgia,serif" font-size="25" fill="#79808c">'
-             '%s &#183; %d lemmas, %d behind the contradiction, depth to %d</text>'
-             % (L + 235, oy + 58, sub, len(order), len(core), dmax))
     return "".join(o), (len(order), len(core), dmax, wmax)
 
 if __name__ == "__main__":

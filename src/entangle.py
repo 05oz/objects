@@ -38,7 +38,7 @@ LS = [4, 6, 8, 10, 12, 14]
 COLS, ROWS = 3, 2
 CELL = 760
 PAD = 54
-W, H = COLS * CELL, ROWS * CELL + 110
+W, H = COLS * CELL, ROWS * CELL
 
 def prod(bits):
     P = np.eye(2, dtype=object)
@@ -71,22 +71,17 @@ def panel(L, ox, oy):
                      % (ox + PAD + j * s, oy + PAD + i * s, s + 0.35, s + 0.35, col,
                         0.10 + 0.85 * abs(t)))
     r = np.linalg.matrix_rank(T.astype(float), tol=1e-9)
-    o.append('<text x="%.1f" y="%.1f" font-family="Georgia,serif" font-size="27" '
-             'fill="#8a919d">L = %d &#183; %d &#215; %d &#183; rank %d</text>'
-             % (ox + PAD, oy + CELL - 18, L, n, n, r))
     return "".join(o), (L, n, r)
 
 if __name__ == "__main__":
     body, meta = [], []
     for k, L in enumerate(LS):
         c, rw = k % COLS, k // COLS
-        s, m = panel(L, c * CELL, rw * CELL + 76)
+        s, m = panel(L, c * CELL, rw * CELL)
         body.append(s); meta.append(m)
     svg = ('<svg xmlns="http://www.w3.org/2000/svg" width="%d" height="%d" viewBox="0 0 %d %d">'
            % (W, H, W, H)
            + '<rect width="%d" height="%d" fill="#070810"/>' % (W, H)
-           + '<text x="%d" y="52" font-family="Georgia,serif" font-size="34" fill="#e8e3d6">'
-             'A bond-dimension-2 state, cut in half</text>' % PAD
            + "".join(body) + "</svg>")
     open(os.path.join(HERE, "entangle.svg"), "w").write(svg)
     for L, n, r in meta:

@@ -37,8 +37,8 @@ from fractions import Fraction as F
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 CERT = "/Users/kirt/Documents/reserch math/certify-repo/zefoz-certificates/certificate2.json"
-W, H = 2300, 1420
-TOP, BOT = 150, H - 150
+W, H = 2300, 1300
+TOP, BOT = 96, H - 96
 
 def num(x):
     return float(F(x)) if isinstance(x, str) else float(x)
@@ -101,12 +101,6 @@ def svg():
         o.append('<line x1="%.1f" y1="%.1f" x2="%.1f" y2="%.1f" stroke="%s" '
                  'stroke-width="1.1" opacity="0.42"/>' % (cx, Y(ei), cx, Y(ej), hue))
 
-    o.append('<text x="120" y="86" font-family="Georgia,serif" font-size="34" fill="#e8e3d6">'
-             'Twenty certified ZEFOZ points of ¹⁶⁷Er³⁺:Y₂SiO₅'
-             '</text>')
-    o.append('<text x="120" y="%d" font-family="Georgia,serif" font-size="24" fill="#767d89">'
-             'sixteen levels each &#183; site 1 left of the rule, site 2 right, each ordered by '
-             'field strength &#183; saddle rose, maximum teal</text>' % (H - 76))
     o.append("</svg>")
     return "".join(o), P
 

@@ -39,7 +39,7 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 CDIR = "/Users/kirt/Documents/reserch math/certify-repo/wedge-certificates"
 PANELS = [("certificate_d3_r1_p1over100.json", "d = 3"),
           ("certificate_d5_r1_p1over100.json", "d = 5")]
-PW, H = 1240, 1300
+PW, H = 1240, 1180
 W = PW * len(PANELS)
 
 def load(fn):
@@ -126,8 +126,6 @@ def panel(fn, label, ox):
             o.append('<circle cx="%.1f" cy="%.1f" r="%.1f" fill="none" stroke="#f3ecdd" '
                      'stroke-width="1.3" opacity="0.55"/>' % (P[i][0], P[i][1], r + 6.5))
 
-    o.append('<text x="%.1f" y="%.1f" font-family="Georgia,serif" font-size="34" fill="#7f858f" '
-             'text-anchor="middle">%s</text>' % (cx, H - 84, label))
     return "".join(o), (nd, len(edges), tot, len(dup))
 
 if __name__ == "__main__":
