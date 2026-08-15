@@ -11,16 +11,6 @@ The mathematics is at [github.com/05oz/certify](https://github.com/05oz/certify)
 
 ---
 
-## The smallest error each code cannot see
-
-![smallest](pieces/smallest.png)
-
-Source: [`src/smallest.py`](src/smallest.py) · [`pieces/smallest.svg`](pieces/smallest.svg)
-
-`doi:10.5281/zenodo.21831995`
-
----
-
 ## A bond-dimension-2 state, cut in half
 
 ![entangle](pieces/entangle.png)
