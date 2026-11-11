@@ -11,6 +11,16 @@ The mathematics is at [github.com/05oz/certify](https://github.com/05oz/certify)
 
 ---
 
+## Twelve faults no detector sees
+
+![circuit](pieces/circuit.png)
+
+Source: [`src/circuit.py`](src/circuit.py) · [`pieces/circuit.svg`](pieces/circuit.svg)
+
+`doi:10.5281/zenodo.23792064`
+
+---
+
 ## A shape that appears when you have enough of them
 
 ![census](pieces/census.png)
